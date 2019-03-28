@@ -1,0 +1,33 @@
+{
+  "beer": [
+    {
+      "id": 1,
+      "title": "Duff",
+      "author": "2,5lt"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Very well",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "Home Simpson",
+    "childrens": [
+      {
+        "id": 1,
+        "name": "Bart"
+      },
+      {
+        "id":2,
+        "name": "Lisa"
+      },
+      {
+        "id": 3,
+        "name": "Maggie"
+      }
+    ]
+  }
+}

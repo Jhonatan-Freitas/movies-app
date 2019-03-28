@@ -18,11 +18,12 @@ export class MoviedbService {
   constructor(private http: HttpClient){ }
 
     //retornar a lista de top rating movies
-  getTopRatedMovies(){
-    return this.http.get(`${this.URL_API}/movie/top_rated?api_key=${this.API_KEY}&language=pt-BR`);
-  }
+  //getTopRatedMovies(){
+   // return this.http.get(`${this.URL_API}/movie/top_rated?api_key=${this.API_KEY}&language=pt-BR`);
+  //}
 
   //função (método) terá um retorno do tipo Observable
+  
   getMovies(param:string):Observable<any>{
     const url = `${this.URL_API}/movie/${param}?api_key=${this.API_KEY}&language=pt-BR`;
     return this.http.get<any>(url).pipe(
@@ -42,16 +43,6 @@ export class MoviedbService {
     };
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

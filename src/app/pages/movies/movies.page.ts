@@ -10,7 +10,7 @@ import { LoadingController } from '@ionic/angular';
 export class MoviesPage implements OnInit {
 
   movies = [];
-  private param:string = "popular";
+  private param:string = "top_rated";
   constructor(private mDBService: MoviedbService, private loadingController: LoadingController) { }
 
   ngOnInit() {
