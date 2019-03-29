@@ -22,7 +22,7 @@ export class MoviesPage implements OnInit {
     const loading = await this.loadingController.create({
       message: 'Carregando filmes...'
     });
-    //exibir a caixa de diálogo
+    //exibir a caixa de diálog
     await loading.present();
 
 
@@ -39,5 +39,15 @@ export class MoviesPage implements OnInit {
     console.log(error);
   }
     ).add();
+}
+
+exibeMsg(id:string){
+  console.log(`O ID do filme clicado é: ${id}`);
+}
+
+doRefresh(){
+  this.consultaFilmes();
+  
+
 }
 }
