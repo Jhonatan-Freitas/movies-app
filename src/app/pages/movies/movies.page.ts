@@ -8,32 +8,34 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./movies.page.scss']
 })
 export class MoviesPage implements OnInit {
-
+ 
   movies = [];
-  private param:string = "top_rated";
+  private arrayCategoriy = ["popular","top_rated", "now_playing", "upcoming"];
+  private movie_name:string;
   constructor(private mDBService: MoviedbService, private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.consultaFilmes();
   }
 
-  async consultaFilmes(){
+  async consultaFilmes(index?){
+    //verifica se o parametro index está setado, senão ele um valor random // usando if ternário
+    index = (typeof index === 'undefined') ? 3 : Math.floor(Math.random() * 4);
+    let param = (this.movie_name === 'undefined') ? `movie/${this.arrayCategoriy[index]}?` : `search/movie?query=${this.movie_name}&include_adult=false&`;
+
     //loading
     const loading = await this.loadingController.create({
       message: 'Carregando filmes...'
     });
+
     //exibir a caixa de diálog
     await loading.present();
 
 
-    await this.mDBService.getMovies(this.param).subscribe(
+    await this.mDBService.getMovies(param).subscribe(
       //pega a resposta
       data=>{
-      //let resposta = (data as any)._body;
-      //converte para obj JSON
-      //resposta = JSON.parse(resposta);
-      this.movies = data;
-      console.log(this.movies);
+      this.movies = data.results;
       loading.dismiss();
   },error =>{
     console.log(error);
@@ -45,9 +47,10 @@ exibeMsg(id:string){
   console.log(`O ID do filme clicado é: ${id}`);
 }
 
-doRefresh(){
-  this.consultaFilmes();
-  
-
+doRefresh(event) {
+  this.consultaFilmes('qualquer coisa');
+  setTimeout(() => {
+    event.target.complete();
+  }, 1000);
 }
 }

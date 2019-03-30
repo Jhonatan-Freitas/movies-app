@@ -17,15 +17,10 @@ export class MoviedbService {
 
   constructor(private http: HttpClient){ }
 
-    //retornar a lista de top rating movies
-  //getTopRatedMovies(){
-   // return this.http.get(`${this.URL_API}/movie/top_rated?api_key=${this.API_KEY}&language=pt-BR`);
-  //}
-
   //função (método) terá um retorno do tipo Observable
   
   getMovies(param:string):Observable<any>{
-    const url = `${this.URL_API}/movie/${param}?api_key=${this.API_KEY}&language=pt-BR`;
+    const url = `${this.URL_API}/${param}api_key=${this.API_KEY}&language=pt-BR`;
     return this.http.get<any>(url).pipe(
         tap(_ => console.log(`O parâmetro requisitado foi: ${param}`)),
         catchError(this.handleError<any>(`Falha no getMovies = ${param}`))

@@ -12,9 +12,10 @@
       <ion-img [src]="'https://image.tmdb.org/t/p/w500'+movie.backdrop_path"></ion-img>
       <ion-card-header>
         <ion-card-subtitle><b>Gênero:</b> <ion-note *ngFor="let g of movie.genres"> {{g.name}} </ion-note>
-          | <b>Popularidade: {{movie.popularity}}</b>
-          <p class="text-center"><b>Data de Lançamento: {{movie.release_date}}</b></p>
-          <p class="text-center"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{movie.vote_average}}</p>
+          | <i class="fa fa-thumbs-up ml-4" aria-hidden="true"></i> {{movie.vote_average}} <b>Popularidade: {{movie.popularity}}</b>
+          <p><b>Data de Lançamento: {{movie.release_date}}</b></p>
+          
+          <p class="text-center"></p>
         </ion-card-subtitle>
       </ion-card-header>
       <p class="text-center lead">Descrição</p>
